@@ -1,1 +1,1 @@
-This is the readme file for the python hello world project
+This is the readme file for the hello world of python project
