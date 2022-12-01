@@ -1,1 +1,1 @@
-This is the readme file for the python if else loops functions
+This is the readme file for the if else loops function of python
