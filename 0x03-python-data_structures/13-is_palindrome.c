@@ -1,55 +1,41 @@
 #include "lists.h"
 
 /**
- * is_palindrome - function to determine if singly linked list is a palindrome
- * @head: input pointer to head of singly linked list
- * Return: 1 if palindrome, 0 if not
+ * is_palindrome - determine if singly linked list is palindrome
+ * @head: pointer to head of singly linked list
+ * Return: 0 if not, 1 if palindrome
  */
-
 int is_palindrome(listint_t **head)
 {
-	listint_t *tmp;
-	int count = 0;
+	listint_t *tmp = *head;
+	unsigned int size = 0, i = 0;
+	int data[10240];
 
-	if (head == NULL)
+	if (head == NULL) /* non existing list is not */
 		return (0);
-	if (*head == NULL)
+
+	if (*head == NULL) /* empty list is palindrome */
 		return (1);
-	tmp = (*head);
-	while (tmp->next != NULL && tmp->next->next != NULL)
+
+	while (tmp) /* find size of linked list */
 	{
-		count += 2;
-		tmp = tmp->next->next;
+		tmp = tmp->next;
+		size += 1;
 	}
-	if (tmp->next != NULL)
-		count++;
-	tmp = (*head);
-	return (palindrome_check(tmp, count));
-}
-
-/**
- * palindrome_check - recursive function to check if listint list is palidrome
- * @tmp_head: pointer to the current head of the list
- * @count: integer count of how many nodes from head to check the end
- * Return: 1 if palindrome, 0 if not
- */
-
-int palindrome_check(listint_t *tmp_head, int count)
-{
-	listint_t *tmp_end = tmp_head;
-	int count2 = 0;
-
-	/* move tmp_end to the end of where checking based on input count */
-	for (count2 = 0; count2 < count; count2++)
-		tmp_end = tmp_end->next;
-	/* count has successfully reached the middle (or past) of the list */
-	if (count <= 0)
+	if (size == 1) /* single node list is palindrome */
 		return (1);
-	/* a mismatch is found, no palindrome */
-	if (tmp_head->n != tmp_end->n)
-		return (0);
-	/* otherwise, not at end and matching, move forward and call again */
-	tmp_head = tmp_head->next;
-	count -= 2;
-	return (palindrome_check(tmp_head, count));
+
+	tmp = *head;
+	while (tmp) /* pull node data into array to compare */
+	{
+		data[i++] = tmp->n;
+		tmp = tmp->next;
+	}
+
+	for (i = 0; i <= (size / 2); i++)
+	{
+		if (data[i] != data[size - i - 1])
+			return (0);
+	}
+	return (1);
 }
