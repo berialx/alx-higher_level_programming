@@ -1,28 +1,27 @@
 #!/usr/bin/python3
+# 8-rectangle.py
+""" File name : 8-rectangle.py
+    It is not allowed to import any module
 """
-Module 8-rectangle
-Contains parent class BaseGeometry
-with public instance method area and integer_validator
-Contains subclass Rectangle
-with instantiation of private attributes width and height, validated py parent
-"""
-
-
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """inherits from BaseGeometry
-    Methods:
-        __init__(self, width, height)
     """
+    Class Rectangle that inherits
+    from class 'BaseGeometry'
+    Attributes:
+    ----------
+    width  {int} -- [Rectangle's width]
+    height {int} -- [Rectangle's height]
+    """
+
     def __init__(self, width, height):
-        """validate and initialize width and height
-        Args:
-            width (int): private
-            height (int): private
         """
-        super().integer_validator("width", width)
+        private attributes width and height,
+        and validating if they are ints.
+        """
+        self.integer_validator("width", width)
         self.__width = width
-        super().integer_validator("height", height)
+        self.integer_validator("height", height)
         self.__height = height

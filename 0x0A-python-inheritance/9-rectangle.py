@@ -1,40 +1,32 @@
 #!/usr/bin/python3
+# 9-rectangle.py
+""" File name : 9-rectangle.py
+    It is not allowed to import any module
 """
-Module 9-rectangle
-Contains parent class BaseGeometry
-with public instance method area and integer_validation
-Contains subclass Rectangle
-with instatiation of private attributes width and height, validated by parent,
-extends parent's area method and prints with __str__
-"""
-
-
 BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
 
 class Rectangle(BaseGeometry):
-    """inherits from BaseGeometry
-    Methods:
-        __init__(self, width, height)
-        area(self)
-        __str__
+    """
+    Define class rectangle
     """
     def __init__(self, width, height):
-        """validate and initialize width and height
-        Args:
-            width (int): private
-            height (int): private
+        """
+        instantiation
         """
         self.integer_validator("width", width)
-        self.integer_validator("height", height)
         self.__width = width
+        self.integer_validator("height", height)
         self.__height = height
 
     def area(self):
-        """extends parent's empty method and returns area"""
+        """
+        Define are recantgle
+        """
         return self.__width * self.__height
 
     def __str__(self):
-        """prints [Rectangle] <width>/<height>"""
-        return "[{:s}] {:d}/{:d}".format(self.__class__.__name__,
-                                         self.__width, self.__height)
+        """
+        print string
+        """
+        return '[Rectangle] {}/{}'.format(self.__width, self.__height)
